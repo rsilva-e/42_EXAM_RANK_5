@@ -2,11 +2,7 @@
 
 #include "Warlock.hpp"
 
-
-Warlock::Warlock()
-{
-
-}
+Warlock::Warlock(){}
 
 Warlock::Warlock(const Warlock &copy)
 {
@@ -15,12 +11,13 @@ Warlock::Warlock(const Warlock &copy)
 
 Warlock &Warlock::operator=(Warlock const &copy)
 {
-    _name = copy._name;
-    _title = copy._title;
+    name = copy.getName();
+    title = copy.getTitle();
     return(*this);
+
 }
 
-Warlock::Warlock(std::string const &name, std::string const &title): _name(name),_title(title)
+Warlock::Warlock(std::string const &newname, std::string const &newtitle) : name(newname),title(newtitle)
 {
    std::cout << getName() << ": This looks like another boring day." << std::endl;
 }
@@ -28,23 +25,22 @@ Warlock::~Warlock()
 {
     std::cout << getName() << ": My job here is done!" << std::endl;
 }
-
-std::string const &Warlock::getTitle() const
+const std::string &Warlock::getName() const
 {
-    return(this->_title);
+    return(name);
+}
+const std::string &Warlock::getTitle() const
+{
+    return(title);
 }
 
-std::string const &Warlock::getName() const
+void Warlock::setTitle(std::string const &newtitle)
 {
-    return(this->_name);
+    title = newtitle;
 }
 
-void Warlock::setTitle(std::string const &str)
-{
-    this->_title = str;
-}
 
 void Warlock::introduce() const
 {
-    std::cout << getName() << ": I am " << getName() << ", " << getTitle() << "!" << std::endl;
+    std::cout << getName() << ": I am "  << getName() << ", " << getTitle() << "!" << std::endl;
 }
