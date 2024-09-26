@@ -1,28 +1,24 @@
 
 
-
 #include <iostream>
 
 
-class Warlock
-{
-private:
-    std::string _name;
-    std::string _title;
-    Warlock & operator=(Warlock const & rhs);
-	Warlock(Warlock const & obj);
-    Warlock();
+class Warlock {
 
+    private:
+        std::string _name;
+        std::string _title;
+        Warlock();
+        Warlock &operator=(Warlock const &copy);
+        Warlock(Warlock const &copy);
 
-public:
-    Warlock(const std::string &name, const std::string &title);
-    ~Warlock();
-    std::string const & getName() const;
-    std::string const & getTitle() const;
-    void setTitle(std::string const &title);
-    void introduce() const;
+    public:
+
+        Warlock(std::string const &name, std::string const &title);
+        ~Warlock();
+        
+        std::string const &getTitle() const;
+        std::string const &getName() const;
+        void setTitle(std::string const &str);
+        void introduce() const;
 };
-
-
-
-

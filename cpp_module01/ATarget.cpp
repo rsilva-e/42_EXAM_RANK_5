@@ -1,39 +1,31 @@
 
 
-#include "Atarget.hpp"
+#include "ATarget.hpp"
 
-Atarget::Atarget(std::string const &type): _type(type)
+ATarget::ATarget() : _type(){}
+
+ATarget::ATarget(const ATarget &copy)
 {
-	//std::cout << name << ": This looks like another boring day." << std::endl;
+    *this = copy;
 }
 
-
-Atarget::~Atarget()
+ATarget &ATarget::operator=(ATarget const &copy)
 {
-  //std::cout << getName() << ": My job here is done!" << std::endl;
+    if(this == &copy)
+        return(*this);
+    _type = copy.getType();
+    return(*this);
 }
 
-Atarget & Atarget::operator=(Atarget const & cpy)
+ATarget::ATarget(std::string const &type): _type(type){}
+ATarget::~ATarget(){}
+
+std::string const &ATarget::getType() const
 {
-	this->_name = cpy._name;
-	this->_effects = cpy._effects;
-	return *this;
+    return(this->_type);
 }
 
-Atarget::Atarget(Atarget const & obj)
+void ATarget::getHitBySpell(ASpell const &spell) const
 {
-	*this = obj;
-}
-
-std::string const &Atarget::getType() const;
-{
-    return(_type);
-}
-
-
-ASpell const  &Atarget::getHitBySpell() const
-{
-    std::cout << getType() << " has been " << getEffects() << "!" << std::endl;
-    std::cout << getType() << " is the ATarget's type, and " << getEffects() << " is the return of the ASpell's
-getEffects function." << std::endl;
+    std::cout << this->_type << " has been " << spell.getEffects() << "!" << std::endl;
 }
