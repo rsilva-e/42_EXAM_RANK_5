@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include "ASpell.hpp"
-
+#include "SpellBook.hpp"
 
 
 class Warlock {
@@ -12,7 +12,7 @@ class Warlock {
     private:
         std::string _name;
         std::string _title;
-        std::vector<ASpell*> spells;
+        SpellBook spells;
         
         Warlock();
         Warlock &operator=(Warlock const &copy);
@@ -27,10 +27,11 @@ class Warlock {
         std::string const &getTitle() const;
         std::string const &getName() const;
         void setTitle(std::string const &str);
-       
-        void introduce() const;
 
+        void introduce() const;
+        
         void learnSpell(ASpell *spell);
         void forgetSpell(std::string spellname);
+
         void launchSpell(std::string spellname , ATarget const &target);
 };
